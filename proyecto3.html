@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Frase Aleatoria</title>
+<style>
+  body { font-family: Arial; background: #fdf6e3; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 20px; }
+  #frase { font-size: 1.4em; max-width: 500px; color: #333; margin-bottom: 20px; font-style: italic; }
+  button { padding: 12px 20px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; }
+  button:hover { background: #ca6c1c; }
+  a { margin-top: 25px; color: #e67e22; text-decoration: none; }
+</style>
+</head>
+<body>
+  <p id="frase">Presiona el botón para ver una frase</p>
+  <button onclick="mostrarFrase()">Nueva frase</button>
+  <a href="index.html">← Volver al repositorio</a>
+
+<script>
+  const frases = [
+    "El único modo de hacer un gran trabajo es amar lo que haces.",
+    "La vida es lo que pasa mientras estás ocupado haciendo otros planes.",
+    "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "No cuentes los días, haz que los días cuenten.",
+    "La mejor manera de predecir el futuro es crearlo."
+  ];
+  function mostrarFrase() {
+    const i = Math.floor(Math.random() * frases.length);
+    document.getElementById("frase").textContent = frases[i];
+  }
+</script>
+</body>
+</html>

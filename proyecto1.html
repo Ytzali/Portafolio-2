@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Tareas</title>
+<style>
+  body { font-family: Arial; background: #f4f4f9; display: flex; flex-direction: column; align-items: center; padding: 40px; }
+  h1 { color: #333; }
+  #app { background: white; padding: 20px; border-radius: 10px; width: 300px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  input { width: 70%; padding: 8px; }
+  button { padding: 8px 12px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+  ul { list-style: none; padding: 0; margin-top: 15px; }
+  li { padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+  li span.done { text-decoration: line-through; color: #aaa; }
+  li button.del { background: #e74c3c; padding: 4px 8px; }
+  a { margin-top: 20px; color: #4CAF50; text-decoration: none; }
+</style>
+</head>
+<body>
+  <h1>Lista de Tareas</h1>
+  <div id="app">
+    <input type="text" id="tarea" placeholder="Nueva tarea">
+    <button onclick="agregar()">Agregar</button>
+    <ul id="lista"></ul>
+  </div>
+  <a href="index.html">← Volver al repositorio</a>
+
+<script>
+  function agregar() {
+    const input = document.getElementById("tarea");
+    if (!input.value.trim()) return;
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = input.value;
+    span.onclick = () => span.classList.toggle("done");
+    const del = document.createElement("button");
+    del.textContent = "x";
+    del.className = "del";
+    del.onclick = () => li.remove();
+    li.appendChild(span);
+    li.appendChild(del);
+    document.getElementById("lista").appendChild(li);
+    input.value = "";
+  }
+</script>
+</body>
+</html>

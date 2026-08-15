@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+<style>
+  body { font-family: Arial; background: #1e1e2f; display: flex; flex-direction: column; align-items: center; padding: 40px; }
+  #calc { background: #2a2a40; padding: 20px; border-radius: 10px; }
+  #pantalla { width: 100%; padding: 10px; font-size: 1.3em; text-align: right; margin-bottom: 10px; border: none; border-radius: 5px; }
+  .fila { display: flex; gap: 6px; margin-bottom: 6px; }
+  button { flex: 1; padding: 15px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer; background: #3a3a55; color: white; }
+  button:hover { background: #4a4a70; }
+  .op { background: #8a8aff; }
+  a { margin-top: 20px; color: #8a8aff; text-decoration: none; }
+</style>
+</head>
+<body>
+  <h1 style="color:white;">Calculadora</h1>
+  <div id="calc">
+    <input type="text" id="pantalla" disabled>
+    <div class="fila">
+      <button onclick="borrar()">C</button>
+      <button onclick="agregar('/')" class="op">/</button>
+      <button onclick="agregar('*')" class="op">*</button>
+      <button onclick="agregar('-')" class="op">-</button>
+    </div>
+    <div class="fila">
+      <button onclick="agregar('7')">7</button>
+      <button onclick="agregar('8')">8</button>
+      <button onclick="agregar('9')">9</button>
+      <button onclick="agregar('+')" class="op">+</button>
+    </div>
+    <div class="fila">
+      <button onclick="agregar('4')">4</button>
+      <button onclick="agregar('5')">5</button>
+      <button onclick="agregar('6')">6</button>
+      <button onclick="calcular()" class="op" style="grid-row: span 2;">=</button>
+    </div>
+    <div class="fila">
+      <button onclick="agregar('1')">1</button>
+      <button onclick="agregar('2')">2</button>
+      <button onclick="agregar('3')">3</button>
+    </div>
+    <div class="fila">
+      <button onclick="agregar('0')" style="flex:2;">0</button>
+      <button onclick="agregar('.')">.</button>
+    </div>
+  </div>
+  <a href="index.html">← Volver al repositorio</a>
+
+<script>
+  const pantalla = document.getElementById("pantalla");
+  function agregar(v) { pantalla.value += v; }
+  function borrar() { pantalla.value = ""; }
+  function calcular() {
+    try { pantalla.value = eval(pantalla.value); }
+    catch { pantalla.value = "Error"; }
+  }
+</script>
+</body>
+</html>
